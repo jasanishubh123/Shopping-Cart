@@ -1,0 +1,57 @@
+<div class="row " style="margin-top: 2cm;">
+
+    
+        <div class="col-md-5  p-3 mb-5">
+            <div style="border:1px solid black ;border-radius:5px;padding: 28px;">
+                <form #categoryform="ngForm" (ngSubmit)="Onsubmit(categoryform)">
+                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="ProductService.selectedCategory._id">
+                       <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">CategoryNo</span>
+                                </div>
+                                <input type="text" class="form-control" name="CategoryNo" #CategoryNo="ngModel" [(ngModel)]="ProductService.selectedCategory.CategoryNo" placeholder="Category No" aria-label="Product Name" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Category</span>
+                                </div>
+                                <input type="text" class="form-control" name="Category" #Category="ngModel" [(ngModel)]="ProductService.selectedCategory.Category" placeholder="Category Name" aria-label="Product Name" aria-describedby="basic-addon1">
+                        </div>
+      
+                        
+                            <button type="submit" name="submit" class="btn btn-success">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="button" name="reset" (click)="resetform(categoryform)" class="btn btn-light">Reset</button>
+                        
+      
+                </form>
+            </div>
+        </div>
+
+    <div class="col-md-7  p-3 mb-5  ">
+       <div style="border: 1px solid black;border-radius: 5px;"> 
+          <table class="table table-hoverW">
+              <thead>
+                <tr>
+                  <th scope="col">Category No</th>
+                  <th scope="col">Category Name</th>
+                  
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of Catdata">
+                  <th scope="row">{{c.CategoryNo}}</th>
+                  <th scope="row">{{c.Category}}</th>
+                  <td><a (click)="OnEdit(c)" class="btn btn-info">Edit</a></td>
+                  <td><a (click)="OnDelete(c._id,categoryform)" class="btn btn-light">Delete</a></td>
+                 
+                </tr>
+             
+              </tbody>
+      </table> 
+       </div>
+    </div>
+   
+
+</div>

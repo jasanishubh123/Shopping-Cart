@@ -1,0 +1,59 @@
+
+
+
+        <div class="row"style="margin-top:1cm">
+          <div class="col-md-6">
+            <div>
+              <span ><span for="CategoryId">Search By Category</span></span>
+              
+              <select class="form-control" (change)="getcatid($event)" name="CategoryId" id="CategoryId" #CategoryId="ngModel" [(ngModel)]="cid" >
+                <option  value="0" >All</option>
+                <option  *ngFor="let cat of Allcat"  value="{{cat.CategoryNo}}">
+                  {{cat.Category}}
+                </option>
+              </select>
+            </div>
+          </div>
+                <div class="col-md-6" style="text-align: right;">
+                        <p>
+                            <a routerLink="/add" class="btn btn-info">Add New Products</a>
+                        </p>
+                </div>
+                
+                  
+          </div>
+              
+           
+    <div class="row" style="margin-top:1cm">
+       
+         <div class="col-md-3 " style="margin-top:1cm" *ngFor="let data of AllProducts | filter:cid ">
+            
+                <div class="card shadow-lg  mb-5 bg-white rounded " style="width: 17rem;">
+                                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                <img src="{{data.ImagePath}}" height="300px" class="card-img-top" alt="{{data.Image}}">
+                                
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Product: <b>{{data.ProductName}}</b></li>
+
+                                  <li class="list-group-item">Brnad: <b>{{data.ProductCompany}}</b></li>
+
+                                <!-- <span *ngFor="let cat of Allcat">
+                                  <li class="list-group-item" *ngIf="data.CategoryId==cat.CategoryNo">
+                                       Category: <b>{{cat.Category}} </b>
+                                 </li>
+                                 </span> -->
+                                 
+                                  <li class="list-group-item">Price: <b>{{data.Price}}&#x20b9;</b></li>
+                                    <li class="list-group-item"> <a [routerLink]="['/edit',data._id]">Edit</a>&nbsp;&nbsp;&nbsp;
+                                    <a  (click)="onDelete(data._id)">Delete</a>&nbsp;&nbsp;&nbsp;
+                                    <a [routerLink]="['/detail',data._id]" >Details</a>
+                                  </li>
+                               
+
+                                </ul>
+                               
+                 </div>
+         </div>
+         
+       
+    </div>

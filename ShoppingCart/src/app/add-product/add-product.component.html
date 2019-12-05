@@ -1,0 +1,89 @@
+<form #productform="ngForm" (ngSubmit)="onSubmit(productform)" enctype="multipart/form-data">
+    <div class="row shadow-lg p-3 mb-5 bg-white rounded" style="margin-top:3cm;">
+
+        <div class="col-md-12" style="margin-bottom: 1cm;">
+                <h3>Add Your Awesome Product</h3>
+            </div>
+    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="ProductService.selectedProduct._id">
+    
+    
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Product</span>
+                </div>
+                <input type="text" class="form-control" name="ProductName" #ProductName="ngModel" [(ngModel)]="ProductService.selectedProduct.ProductName" placeholder="Product Name" aria-label="Product Name" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">Company</span>
+                    </div>
+                    <input type="text" name="ProductCompany" #ProductCompany="ngModel" [(ngModel)]="ProductService.selectedProduct.ProductCompany" class="form-control" placeholder="Company" aria-label="Company" aria-describedby="basic-addon2">
+            </div>
+        </div>
+    
+      <div class="col-md-6">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Category</span>
+            </div>
+            <select  class="form-control" name="CategoryId" #CategoryId="ngModel" [(ngModel)]="ProductService.selectedProduct.CategoryId">
+                <option *ngFor="let cat of Allcat" value="{{cat.CategoryNo}}">{{cat.Category}}</option>
+            </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text">Price</span>
+            </div>
+            <input type="text" name="Price" #Price="ngModel" [(ngModel)]="ProductService.selectedProduct.Price" class="form-control" aria-label="Price">
+            <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+            </div>
+        </div>
+       </div>
+      
+       <div class="col-md-6">
+      <div class="input-group mb-3">
+            <div class="input-group-append">
+                 <span class="input-group-text" id="basic-addon2">Manufecture Date</span>
+            </div>
+            <input type="date" name="MfgDate" #MfgDate="ngModel" [(ngModel)]="ProductService.selectedProduct.MfgDate" class="form-control" placeholder="Date" aria-label="Date" aria-describedby="basic-addon2">
+          </div>
+       </div>
+
+       <div class="col-md-6">
+       <div class="input-group mb-3" >
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="form-control">
+              <!-- <input type="file" name="Image" #Image="ngModel" (change)="selectImage($event)" [(ngModel)]="ProductService.selectedProduct.Image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"> -->
+              <input type="file" name="Image" #Image="ngModel" (change)="selectImage($event)"  [(ngModel)]="ProductService.selectedProduct.Image">
+              <!-- <label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">Description</span>
+            </div>
+            <textarea class="form-control" name="Description" #Description="ngModel" [(ngModel)]="ProductService.selectedProduct.Description" aria-label="Description"></textarea>
+        </div>
+        </div>
+
+
+        
+        <div class="col-md-12"style="margin-top:15px;text-align:end;">
+          <button type="button"  class="btn btn-info" (click)="resetForm(productform)">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <button type="submit" class="btn btn-success" name="submit">Submit</button>
+        </div>
+    </div>
+
+</form>

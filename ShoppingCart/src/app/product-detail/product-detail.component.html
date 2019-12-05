@@ -1,0 +1,29 @@
+
+ <!-- {{singledata.ProductName}} -->
+ <div class="row" style="margin-top:1cm">
+
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{singledata.ImagePath}}" height="220" class="card-img" alt="{{singledata.Image}}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{singledata.ProductName}}</h5>
+                        <span *ngFor="let cat of Allcat">
+                            <span class="card-text"  *ngIf="singledata.CategoryId==cat.CategoryNo">
+                                        Category: <b>{{cat.Category}} </b>
+                            </span>
+                        </span><br>
+                    
+                        <span class="card-text"> Brnad: <b>{{singledata.ProductCompany}}</b></span><br>
+                        <span class="card-text">Manufecture Date:<b>{{singledata.MfgDate | date:'dd/mm/yyyy'}}</b></span><br>
+                         
+                        <span class="card-text">Price: <b>{{singledata.Price}}</b></span><br>
+                        <span class="card-text">Description: <b>{{singledata.Description}}</b></span>
+                    
+                    </div>
+                </div>
+                </div>
+        </div>
+</div>
